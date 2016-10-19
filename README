@@ -1,0 +1,27 @@
+# 安装说明
+#>安装依赖
+yum -y install python python-devel python-setuptools
+easy_install --upgrade pip
+pip install -r requirements.txt
+
+
+# 高级配置
+#>初始数据
+rm -rf <pwd>/migrations
+rm -rf <pwd>/app/conf/rdsdata.db
+vim app/conf/config.py
+SQLALCHEMY_DATABASE_URI = 'sqlite:///app/conf/rdsdata.db'
+#>数据迁移
+python <pwd>/xmzoomeye-agent db init
+python <pwd>/xmzoomeye-agent db migrate
+python <pwd>/xmzoomeye-agent db upgrade
+#>还原配置
+vim app/conf/config.py
+SQLALCHEMY_DATABASE_URI = 'sqlite:///conf/rdsdata.db'
+
+# 运行说明
+cd <pwd>/xmzoomeye-agent
+./restart_service.sh
+
+# 测试访问
+curl http://127.0.0.1/

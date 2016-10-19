@@ -1,0 +1,35 @@
+/* - common style */
+a {
+    text-decoration: none;
+}
+#add_redis input {
+    margin: 0 10px 20px 0;
+}
+/* - redis table*/
+.redis_table {
+    width: 100%;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+}
+
+.redis_table thead tr {
+    color: #ffffff;
+    text-align: left;
+    background-color: #000000;
+}
+.redis_table thead tr th:last-child{
+    text-align: center;
+}
+.redis_table tbody tr td:last-child{
+    text-align: center;
+}
+.redis_table tr, .redis_table td,  .redis_table th{
+    border: solid 1px lightgray;
+}
+/* - chart styles*/
+.chart_div {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 10px;
+    border: dotted 1px #000000;
+}

@@ -1,0 +1,54 @@
+{%- extends 'base.html' -%}
+{%- block body -%}
+{{ super() }}
+<div id="wrapper">
+    <p class="breadcrumb">
+        <a href="/">Home</a> &gt; Redis List
+    </p>
+    <h1>RedisInstances - Redis Instances Informations. </h1>
+    <form id="add_redis" autocomplete="on">
+        rds_host: <input type="text" placeholder="127.0.0.1" id="rds_host" />
+        rds_port: <input type="text" placeholder="5123" id="rds_port" />
+        rds_pass: <input type="text" placeholder="" id="rds_pass" />
+        usermail: <input type="text" placeholder="notification" id="usermail" />
+        <input type="button" value="Add" onclick="redis_add_btn_click()"/>
+    </form>
+    <table class="redis_table">
+        <thead>
+            <tr>
+                <th>rds_host</th>
+                <th>rds_port</th>
+                <th>usermail</th>
+                <th>add_time</th>
+                <th>operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for redis in redis_list %}
+            <tr>
+                <td>
+                    <a href="/redis/{{redis.identify}}.html">{{redis.rds_host}}</a>
+                </td>
+                <td>{{ redis.rds_port }}</td>
+                <td>{{ redis.usermail }}</td>
+                <td>{{ redis.add_time }}</td>
+                <td>
+                    <a href="" onclick="redis_edt_lnk_click('{{ redis.identify }}');return false">
+                        edit
+                    </a>
+                    |
+                    <a href="" onclick="redis_del_lnk_click('{{ redis.identify }}');return false">
+                        delete
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{%- endblock -%}
+{%- block scripts -%}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/moment.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+{%- endblock -%}

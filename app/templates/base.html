@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html {% block  html_attribs %}{%- endblock -%}>
+{%- block html -%}    
+    <head>
+    {%- block head -%}    
+        {% block meta %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="XMDEVOPS - 云产品线自动化 运维|监控|管理|发布 系统">
+        <meta name="author" content="李满满">
+        <meta name="keyword" content="XMDEVOPS, 运维系统, 监控系统, 资产管理, 代码发布, 自动运维">
+        {%- endblock -%}
+        <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <title>{{ title|default('XMDEVOPS', true) }} - 云产品线自动化运维|监控|资产管理系统</title>
+        {% block styles %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        {%- endblock -%}
+    {%- endblock -%}    
+    </head>
+    <body {%- block body_attribs -%}{%- endblock -%}>
+    {%- block body -%}
+    {%- endblock -%}
+    {%- block scripts -%}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    {%- endblock -%}
+    </body>
+{%- endblock -%}    
+</html>

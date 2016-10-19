@@ -1,0 +1,89 @@
+{%- extends 'base.html' -%}
+{%- block body -%}
+{{ super() }}
+<div id="wrapper" identify="{{ redis.identify }}">
+    <p class="breadcrumb">
+        <a href="/">Home</a> &gt; {{ redis.rds_host }}:{{ redis.rds_port }}
+    </p>
+    <h1>[{{ redis.rds_host }}:{{ redis.rds_port }}] - Redis Monitor Informations. </h1>
+    <table class="redis_table">
+        <thead>
+            <tr>
+                <th colspan="6">ServerInfo</th>
+            </tr>
+            <tr>
+                <th>Vesion</th>
+                <th>OS</th>
+                <th>Process_ID</th>
+                <th>Up_Time</th>
+                <th>Connection</th>
+                <th>Blocked</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="redis_version"> None </td>
+                <td id="os"> None </td>
+                <td id="process_id"> None </td>
+                <td id="uptime_in_seconds"> None </td>
+                <td id="connected_clients"> None </td>
+                <td id="blocked_clients"> None </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="redis_table">
+        <thead>
+            <tr>
+                <th colspan="8">StatusInfo</th>
+            </tr>
+            <tr>
+                <th>connect_received</th>
+                <th>cmd_processed</th>
+                <th>ops_per_sec</th>
+                <th>rejected_connect</th>
+                <th>expired_keys</th>
+                <th>evicted_keys</th>
+                <th>hits</th>
+                <th>misses</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="total_connections_received"> None </td>
+                <td id="total_commands_processed"> None </td>
+                <td id="instantaneous_ops_per_sec"> None </td>
+                <td id="rejected_connections"> None </td>
+                <td id="expired_keys"> None </td>
+                <td id="evicted_keys"> None </td>
+                <td id="keyspace_hits"> None </td>
+                <td id="keyspace_misses"> None </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="redis_table redis_database">
+        <thead>
+            <tr>
+                <th colspan="4">Redis Info</th>
+            </tr>
+            <tr>
+                <th>DB</th>
+                <th>keys</th>
+                <th>expires</th>
+                <th>avg_ttl</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+
+    </table>
+    <div class="chart_div" id="tim_chart"></div>
+    <div class="chart_div" id="ops_chart"></div>
+    <div class="chart_div" id="mem_chart"></div>
+    <div class="chart_div" id="cpu_chart"></div>
+</div>
+{%- endblock -%}
+{%- block scripts -%}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/echarts/echarts.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/monitor.js') }}"></script>
+{%- endblock -%}
