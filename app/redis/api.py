@@ -9,7 +9,6 @@
 """
 from __future__ import absolute_import
 # 说明: 导入公共模块
-import pprint
 from redis import RedisError
 from flask import jsonify, render_template, request
 # 说明: 导入其它模块

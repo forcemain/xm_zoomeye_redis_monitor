@@ -262,5 +262,3 @@ require([
     }
     setInterval(get_redis_jsondata(identify), 1000)
 })
-
-

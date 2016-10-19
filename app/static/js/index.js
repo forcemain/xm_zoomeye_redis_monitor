@@ -100,3 +100,18 @@ function redis_edt_lnk_click(identify) {
     redis_edit(identify)
 }
 
+
+// 增加表格搜索功能
+$(document).ready(function(){
+    $('.redis_table').dataTable({
+        "searching": true,
+        "paging": false,
+        "lengthChange": false,
+        "info": false,
+        "columnDefs": [{
+            "targets": 'nosort',
+            "orderable": false
+        }],
+        "order": [1]
+    });
+})

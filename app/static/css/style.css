@@ -26,6 +26,10 @@ a {
 .redis_table tr, .redis_table td,  .redis_table th{
     border: solid 1px lightgray;
 }
+.dataTables_wrapper .dataTables_filter {
+  float: right;
+  text-align: right;
+}
 /* - chart styles*/
 .chart_div {
     width: 100%;
