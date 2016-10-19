@@ -19,6 +19,9 @@ class __Config(object):
     MAIL_USERNAME = ''
     MAIL_DEFAULT_SENDER = ''
 
+    # -- flask-pids
+    PID_FILE = 'logs/xmzoomeye-redis.pid'
+
     # -- flask-sqlalchemy
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_RECORD_QUERIES = True

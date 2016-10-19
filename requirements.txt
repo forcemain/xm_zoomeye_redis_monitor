@@ -26,42 +26,6 @@ SQLAlchemy == 1.0.14
 # migrations\versions\8160d3e0fcf4_.py: 13
 alembic == 0.8.7
 
-# main.py: 11,12
-bottle-cuturl == 0.0.21
-
-# main.py: 11,12
-chavo == 0.1.13
-
-# main.py: 11,12
-cola == 0.1.0
-
-# main.py: 11,12
-flask-landing == 0.1.0
-
-# main.py: 11,12
-generate-pip == 0.1.6
-
-# main.py: 11,12
-image-lister == 0.1.9
-
-# main.py: 11,12
-kaptl == 0.4.9.8
-
-# main.py: 11,12
-matador-deploy == 0.0.5
-
-# main.py: 11,12
-msstitch == 1.0
-
-# main.py: 11,12
-pyboxio == 0.0.1
-
-# main.py: 11,12
-pypi-under == 0.0.5
-
 # app\libs\database.py: 13
 # app\redis\api.py: 13
 redis == 2.10.5
-
-# main.py: 11,12
-stardust-rpg == 1.0.0

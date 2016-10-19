@@ -2,7 +2,7 @@
 #>安装依赖
 yum -y install python python-devel python-setuptools
 easy_install --upgrade pip
-pip install -r requirements.txt
+pip install --upgrade -r requirements.txt
 
 
 # 高级配置
@@ -21,6 +21,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///conf/rdsdata.db'
 
 # 运行说明
 cd <pwd>/xmzoomeye-agent
+chmod u+x *.sh
 ./restart_service.sh
 
 # 测试访问

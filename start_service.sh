@@ -14,7 +14,7 @@ prog_ppid=`(cat ${prog_pids}|grep -o "[^ ]\+\( \+[^ ]\+\)*") 2>/dev/null`
 if [[ "X${prog_ppid}" != "X" ]];then
     echo -e "Host: $(hostname) Pid: ${prog_ppid:-"None"} Prog: ${prog_path} Status: start"
 else
-    (python ${prog_path} runserver -h 0.0.0.0 -p 80 --threaded -r -D &>/dev/null)&
+    (python ${prog_path} runserver -h 10.2.5.51 -p 8081 --threaded -r -D &>/dev/null)&
     sleep 5
     prog_ppid=`(cat ${prog_pids}|grep -o "[^ ]\+\( \+[^ ]\+\)*") 2>/dev/null`
     echo -e "Host: $(hostname) Pid: ${prog_ppid:-"None"} Prog: ${prog_path} Status: start"

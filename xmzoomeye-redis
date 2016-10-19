@@ -8,9 +8,11 @@
 #
 """
 # 说明: 导入公共模块
+import os
+import sys
 from app import db as _db
 from app import create_app
-from flask_script import Manager
+from flask_script import Manager, Server, Option, Command
 from flask_migrate import Migrate, MigrateCommand
 # 说明: 导入其它模块
 
@@ -19,7 +21,35 @@ app = create_app()
 manager = Manager(app)
 migrate = Migrate(app, _db)
 
+
+# 说明: 添加额外功能
+class RunServer(Server):
+    def __init__(self, pid_file=app.config.get('PID_FILE'), *args, **kwargs):
+        super(RunServer, self).__init__(*args, **kwargs)
+        self.pid_file = pid_file
+
+    def __call__(self, app, host, port, use_debugger, use_reloader, threaded, processes, passthrough_errors):
+        if use_debugger is None:
+            use_debugger = app.debug
+            if use_debugger is None:
+                use_debugger = True
+        if use_reloader is None:
+            use_reloader = app.debug
+        if self.pid_file:
+            with open(self.pid_file, 'w+b') as f:
+                f.write(str(os.getpid()))
+        app.run(host=host,
+                port=port,
+                debug=use_debugger,
+                use_debugger=use_debugger,
+                use_reloader=use_reloader,
+                threaded=threaded,
+                processes=processes,
+                passthrough_errors=passthrough_errors,
+                **self.server_options)
+
 manager.add_command('db', MigrateCommand)
+manager.add_command('runserver', RunServer())
 
 if __name__ == '__main__':
     manager.run()
